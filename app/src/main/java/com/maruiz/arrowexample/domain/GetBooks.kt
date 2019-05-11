@@ -1,6 +1,5 @@
 package com.maruiz.arrowexample.domain
 
-import arrow.core.Either
 import arrow.core.None
 import arrow.effects.IO
 import com.maruiz.arrowexample.data.extensions.makeCall

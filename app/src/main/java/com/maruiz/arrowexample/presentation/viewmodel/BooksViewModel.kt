@@ -2,6 +2,7 @@ package com.maruiz.arrowexample.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import arrow.core.None
 import arrow.effects.extensions.io.unsafeRun.runNonBlocking
 import arrow.unsafe
@@ -14,7 +15,9 @@ class BooksViewModel(private val getBooks: GetBooks) : BaseViewModel() {
     fun observeBooks(): LiveData<List<BookPresentationModel>> = books
 
     fun requestBooks() = unsafe {
-        runNonBlocking({ getBooks(None) }) { it.fold(::handleFailure, ::handleSuccess) }
+        runNonBlocking({ getBooks(None, viewModelScope.coroutineContext) }) {
+            it.fold(::handleFailure, ::handleSuccess)
+        }
     }
 
     private fun handleSuccess(books: List<BookModel>) {
