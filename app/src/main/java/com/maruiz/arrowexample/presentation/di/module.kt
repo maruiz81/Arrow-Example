@@ -5,8 +5,8 @@ import com.maruiz.arrowexample.data.services.BookApi
 import com.maruiz.arrowexample.domain.GetBooks
 import com.maruiz.arrowexample.presentation.adapter.BooksAdapter
 import com.maruiz.arrowexample.presentation.viewmodel.BooksViewModel
-import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
