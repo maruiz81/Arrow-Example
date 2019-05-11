@@ -3,15 +3,14 @@ package com.maruiz.arrowexample.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.maruiz.arrowexample.data.failure.Failure
 
 abstract class BaseViewModel : ViewModel() {
-    private val failure: MutableLiveData<Failure> = MutableLiveData()
+    private val failure: MutableLiveData<String> = MutableLiveData()
 
-    fun observeFailure(): LiveData<Failure> = failure
+    fun observeFailure(): LiveData<String> = failure
 
     protected fun handleFailure(failure: Throwable) {
-        this.failure.value = Failure.ServerError
+        this.failure.value = failure.message ?: ""
     }
 
     override fun onCleared() {
