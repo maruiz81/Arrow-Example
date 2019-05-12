@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setupReycler()
+        setupRecycler()
 
         booksViewModel.observeBooks().observe(this, Observer {
             adapter.renderables = it
@@ -33,13 +33,8 @@ class MainActivity : AppCompatActivity() {
         booksViewModel.requestBooks()
     }
 
-    private fun setupReycler() {
+    private fun setupRecycler() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
     }
-
-    companion object {
-        private const val TAG = "MainActivity"
-    }
-
 }
