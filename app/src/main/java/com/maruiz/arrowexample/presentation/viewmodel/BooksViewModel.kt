@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import arrow.core.None
-import arrow.effects.extensions.io.unsafeRun.runNonBlocking
+import arrow.fx.extensions.io.unsafeRun.runNonBlocking
 import arrow.unsafe
 import com.maruiz.arrowexample.data.model.BookModel
 import com.maruiz.arrowexample.domain.GetBooks

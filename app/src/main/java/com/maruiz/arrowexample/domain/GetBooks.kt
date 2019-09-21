@@ -1,7 +1,7 @@
 package com.maruiz.arrowexample.domain
 
 import arrow.core.None
-import arrow.effects.IO
+import arrow.fx.IO
 import com.maruiz.arrowexample.data.extensions.makeCall
 import com.maruiz.arrowexample.data.model.BookModel
 import com.maruiz.arrowexample.data.services.BookApi
