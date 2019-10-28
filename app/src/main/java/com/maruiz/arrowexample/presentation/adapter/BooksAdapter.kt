@@ -15,6 +15,8 @@ class BooksAdapter : RecyclerView.Adapter<BooksAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
+    lateinit var itemClicked: (BookPresentationModel) -> Unit
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(parent.inflate(R.layout.row_book))
 
@@ -24,12 +26,13 @@ class BooksAdapter : RecyclerView.Adapter<BooksAdapter.ViewHolder>() {
         holder.bind(renderables[position])
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(model: BookPresentationModel) {
             itemView.image.loadImage(model.image)
             itemView.title.text = model.title
             itemView.author.text = model.author
             itemView.synopsis.text = model.shortSynopsis
+            itemView.setOnClickListener { itemClicked(model) }
         }
     }
 }

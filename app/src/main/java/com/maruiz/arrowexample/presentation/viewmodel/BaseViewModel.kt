@@ -3,8 +3,10 @@ package com.maruiz.arrowexample.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.maruiz.arrowexample.domain.UseCase
 
-abstract class BaseViewModel : ViewModel() {
+abstract class BaseViewModel(private val usecases: List<UseCase<*, *>> = emptyList()) :
+    ViewModel() {
     private val failure: MutableLiveData<String> = MutableLiveData()
 
     fun observeFailure(): LiveData<String> = failure
@@ -15,8 +17,7 @@ abstract class BaseViewModel : ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        cancelRequest()
-    }
 
-    abstract fun cancelRequest()
+        usecases.forEach { it.cancel() }
+    }
 }

@@ -14,4 +14,8 @@ abstract class UseCase<out Type, in Params> where Type : Any {
             continueOn(clientContext)
             value
         }
+
+    fun cancel() {
+        //TODO CANCEL THE REQUEST
+    }
 }
